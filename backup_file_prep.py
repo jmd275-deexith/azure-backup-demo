@@ -13,7 +13,7 @@ exec_dir = os.getcwd()
 print("This is the executable directory", exec_dir)
 
 # RUN_TS environment - Injected from github actions
-timestamp = os.getenv("RUN_TS") or datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+timestamp = os.getenv("RUN_TS")
 if not timestamp:
     create_div()
     print("Exiting since there is no environment variable set for RUN_TS")

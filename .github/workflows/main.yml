@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate Centralized UTC Timestamp
         run: |
-          echo "RUN_TS=$(date -u +"%Y-%m-%d_%H-%M-%S")" >> $GITHUB_ENV
+          echo "RUN_TS=$(TZ=Asia/Kolkata date +"%Y-%m-%d_%H-%M-%S")" >> $GITHUB_ENV
 
       - name: Run Backup Script
         run: |
