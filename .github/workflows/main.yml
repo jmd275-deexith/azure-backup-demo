@@ -31,7 +31,7 @@ jobs:
 
       - name: Run Backup Script
         run: |
-          python main.py
+          python backup_file_prep.py
 
       - name: Azure Login
         uses: azure/login@v3
