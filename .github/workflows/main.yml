@@ -38,4 +38,14 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Upload Backup File to Azure Blob Storage
+        run: |
+          az storage blob upload \
+            --account-name sourcedlsbackupvaultpoc \
+            --container-name raw \
+            --name backup_poc_source_file_${RUN_TS}.json \
+            --file backup_poc_source_file_${RUN_TS}.json \
+            --auth-mode login \
+            --overwrite true
+
       
