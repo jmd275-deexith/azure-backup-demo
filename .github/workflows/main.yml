@@ -1,0 +1,39 @@
+name: Backup Job
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+
+jobs:
+  my_job:
+    name: Create backup files using GitHub Actions runtime and predefined script
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: "3.12"
+
+      - name: Verify Python Installation
+        run: |
+          python --version
+          pip --version
+
+      - name: Generate Centralized UTC Timestamp
+        run: |
+          echo "RUN_TS=$(date -u +"%Y-%m-%d_%H-%M-%S")" >> $GITHUB_ENV
+
+      - name: Run Backup Script
+        run: |
+          python main.py
+
+      - name: Azure Login
+        uses: azure/login@v3
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      
