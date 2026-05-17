@@ -2,13 +2,7 @@ name: Backup Job
 
 on:
   schedule:
-    - cron: "7,37 * * * *"
-
-  workflow_dispatch:
-  
-  push:
-    branches:
-      - master
+    - cron: "*/10 * * * *"
 
 jobs:
   my_job:
