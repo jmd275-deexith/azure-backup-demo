@@ -3,6 +3,7 @@ name: Backup Job
 on:
   schedule:
     - cron: "*/10 * * * *"
+  workflow_dispatch:
 
 jobs:
   my_job:
